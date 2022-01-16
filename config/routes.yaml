@@ -1,0 +1,18 @@
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+
+job_index:
+    path: /api/v1/jobs
+    controller: App\Controller\JobController::indexAction
+    methods: [GET]
+
+job_create:
+    path: /api/v1/jobs
+    controller: App\Controller\JobController::createAction
+    methods: [POST]
+
