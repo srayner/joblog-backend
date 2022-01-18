@@ -24,7 +24,7 @@ final class Version20220118132121 extends AbstractMigration
         $this->addSql('ALTER TABLE job ADD user_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE job ADD CONSTRAINT FK_FBD8E0F8A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
         $this->addSql('CREATE INDEX IDX_FBD8E0F8A76ED395 ON job (user_id)');
-        $this->addSql('INSERT INTO users (`first_name`, `last_name`) VALUES ("Steve", "Rayner")');
+        $this->addSql('INSERT INTO user (`first_name`, `last_name`) VALUES ("Steve", "Rayner")');
     }
 
     public function down(Schema $schema): void
