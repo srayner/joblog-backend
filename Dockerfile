@@ -8,6 +8,7 @@ RUN a2enmod rewrite
 ENV APACHE_DOCUMENT_ROOT /var/www/html
 
 COPY /server /var/www/html
-#RUN chown -R www-data:www-data /var/www/joblog
+RUN mkdir /var/www/html/var
+RUN chown www-data:www-data /var/www/html/var
 COPY /server/apache.conf /etc/apache2/sites-enabled/joblog.conf
 RUN rm /etc/apache2/sites-enabled/000-default.conf
