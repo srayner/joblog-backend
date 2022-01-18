@@ -17,7 +17,7 @@ Clone this repo...
     
 Build the backend application... (you may need to substitue $PWD for %cd% on Windows, I'm not sure)
 
-    docker run --rm --interactive --tty --volume $PWD/server:/app composer install
+    docker run --rm --interactive --tty --volume $PWD/joblog-backend:/app composer install
 
 Spin up docker containers for both the backend application and a database server...
 
