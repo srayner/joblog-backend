@@ -1,11 +1,3 @@
-controllers:
-    resource: ../src/Controller/
-    type: annotation
-
-kernel:
-    resource: ../src/Kernel.php
-    type: annotation
-
 job_index:
     path: /api/v1/jobs
     controller: App\Controller\JobController::indexAction
@@ -16,3 +8,12 @@ job_create:
     controller: App\Controller\JobController::createAction
     methods: [POST]
 
+property_index:
+    path: /api/v1/properties
+    controller: App\Controller\PropertyController::indexAction
+    methods: [GET]
+
+user_index:
+    path: /api/v1/users
+    controller: App\Controller\UserController::indexAction
+    methods: [GET]

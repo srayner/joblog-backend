@@ -5,16 +5,12 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Job;
-use App\Entity\Property;
 use App\Form\Type\JobType;
-use FOS\RestBundle\Controller\AbstractFOSRestController;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class JobController extends AbstractFOSRestController
+class JobController extends AbstractAPIController
 {
     public function indexAction(ManagerRegistry $doctrine): Response
     {
@@ -25,11 +21,6 @@ class JobController extends AbstractFOSRestController
 
     public function createAction(ManagerRegistry $doctrine, Request $request): Response
     {
-    //    //TODO: refactor this away
-    //    $property = new Property();
-    //    $property->setName('Example first property');
-    //    $entityManager->persist($property);
-
         $form = $this->createForm(JobType::class);
         $form->submit($request->request->all());
 
@@ -44,10 +35,5 @@ class JobController extends AbstractFOSRestController
         $entityManager->flush();
 
         return $this->respond($job);
-    }
-
-    protected function respond($data, int $statusCode = Response::HTTP_OK)
-    {
-        return $this->handleView($this->view($data, $statusCode));
     }
 }

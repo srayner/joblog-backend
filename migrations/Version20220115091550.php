@@ -23,6 +23,9 @@ final class Version20220115091550 extends AbstractMigration
         $this->addSql('CREATE TABLE job (id INT AUTO_INCREMENT NOT NULL, property_id INT DEFAULT NULL, summary VARCHAR(100) NOT NULL, description TEXT NOT NULL, status VARCHAR(255) NOT NULL, INDEX IDX_FBD8E0F8549213EC (property_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE property (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE job ADD CONSTRAINT FK_FBD8E0F8549213EC FOREIGN KEY (property_id) REFERENCES property (id)');
+        $this->addSql('INSERT INTO property (`name`) VALUES ("7 George Street, SLOUGH")');
+        $this->addSql('INSERT INTO property (`name`) VALUES ("29 Richmond Road, NORWICH")');
+        $this->addSql('INSERT INTO property (`name`) VALUES ("25 Victoria Road, WOLVERHAMPTON")');
     }
 
     public function down(Schema $schema): void

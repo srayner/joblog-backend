@@ -19,98 +19,87 @@ class Job
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(name="summary", type="string", length=100)
      */
-    private $summary;
+    private string $summary;
 
     /**
      * @ORM\Column(name="description", type="text", length=500)
      */
-    private $description;
+    private string $description;
 
     /**
      * @ORM\Column(name="status", type="string")
      */
-    private $status;
+    private string $status;
 
     /**
      * @ORM\ManyToOne(targetEntity="Property", fetch="EAGER")
      * @ORM\JoinColumn(name="property_id", referencedColumnName="id")
      */
-    private $property;
+    private Property $property;
 
     /**
-     * @return mixed
+     * @ORM\ManyToOne(targetEntity="User", fetch="EAGER")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    public function getId()
+    private User $user;
+
+    public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSummary()
+    public function getSummary(): string
     {
         return $this->summary;
     }
 
-    /**
-     * @param mixed $summary
-     */
-    public function setSummary($summary): void
+    public function setSummary(string $summary): void
     {
         $this->summary = $summary;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @param mixed $description
-     */
-    public function setDescription($description): void
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->status;
     }
 
-    /**
-     * @param mixed $status
-     */
-    public function setStatus($status): void
+    public function setStatus(string $status): void
     {
         $this->status = $status;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getProperty()
+    public function getProperty(): Property
     {
         return $this->property;
     }
 
-    /**
-     * @param mixed $property
-     */
-    public function setProperty($property): void
+    public function setProperty(Property $property): void
     {
         $this->property = $property;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
     }
 }
