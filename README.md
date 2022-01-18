@@ -1,11 +1,11 @@
 # Example backend PHP application using Symfony, Doctrine and MySQL, to list and log jobs.
 
-## prerequisite
+## Prerequisites
 
 The following installation instructions assume you have git and Docker installed. You do not need PHP or composer installed as the
 application is built using a docker image and also runs inside docker containers.
 
-The database is accesible on port 33067, and the backend API is accessible on port 8000. If you system is alreading using these port numbers then
+The database is accesible on port 33067, and the backend API is accessible on port 8000. If your system is already using these port numbers then
 they can be altered by editing the docker-compose.yml file. If you do change port 8000 then remember to make the same change in the .env.local
 file for the front end.
 
@@ -15,11 +15,11 @@ Clone this repo...
 
     git clone https://github.com/srayner/joblog-backend.git
     
-Build the backend application...
+Build the backend application... (you may need to substitue $PWD for %cd% on Windows, I'm not sure)
 
     docker run --rm --interactive --tty --volume $PWD/server:/app composer install
 
-Spin up docker contains for both the backend application and a MySQL database server.
+Spin up docker containers for both the backend application and a database server...
 
     docker-compose up -d
     
