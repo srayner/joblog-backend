@@ -21,7 +21,7 @@ Build the backend application... (you may need to substitue $PWD for %cd% on Win
 
 Spin up docker containers for both the backend application and a database server...
 
-    docker-compose up -d
+    docker-compose -f joblog-backend/docker-compose.yml up -d
     
 Wait a minute or so to ensure the database server is fully up and accepting requests, then create and initialise the database...
 
