@@ -25,7 +25,7 @@ Spin up docker containers for both the backend application and a database server
     
 Wait a minute or so to ensure the database server is fully up and accepting requests, then create the database...
 
-    docker exec -e DATABASE_URL="mysql://root:example@database:3306/joblog?serverVersion8.0" joblog-api /usr/local/bin/php /var/www/html/bin/console doctrine:database:create --env=prod
+    docker exec -u www-data -e DATABASE_URL="mysql://root:example@database:3306/joblog?serverVersion8.0" joblog-api /usr/local/bin/php /var/www/html/bin/console doctrine:database:create --env=prod
     
-    docker exec -e DATABASE_URL="mysql://root:example@database:3306/joblog?serverVersion8.0" joblog-api /usr/local/bin/php /var/www/html/bin/console doctrine:migrations:migrate --env=prod
+    docker exec -u www-data -e DATABASE_URL="mysql://root:example@database:3306/joblog?serverVersion8.0" joblog-api /usr/local/bin/php /var/www/html/bin/console doctrine:migrations:migrate --env=prod
 
