@@ -5,7 +5,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./server/Dockerfile
+      dockerfile: ./Dockerfile
     container_name: joblog-api
     environment:
         APP_ENV: dev
