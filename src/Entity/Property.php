@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Property
@@ -23,6 +24,11 @@ class Property
 
     /**
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Property name cannot be longer than {{ limit }} characters."
+     * )
      */
     private string $name;
 
