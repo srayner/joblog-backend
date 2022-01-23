@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Job
@@ -22,29 +23,43 @@ class Job
     private int $id;
 
     /**
-     * @ORM\Column(name="summary", type="string", length=100)
+     * @ORM\Column(name="summary", type="string", length=150)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     max = 150,
+     *     maxMessage = "Job summary name cannot be longer than {{ limit }} characters."
+     * )
      */
     private string $summary;
 
     /**
-     * @ORM\Column(name="description", type="text", length=500)
+     * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     max = 500,
+     *     maxMessage = "Job descriprion cannot be longer than {{ limit }} characters."
+     * )
      */
     private string $description;
 
     /**
      * @ORM\Column(name="status", type="string")
+     * @Assert\NotNull(message="Status cannot be blank.")
+     * @Assert\Choice({"open", "closed"})
      */
     private string $status;
 
     /**
      * @ORM\ManyToOne(targetEntity="Property", fetch="EAGER")
      * @ORM\JoinColumn(name="property_id", referencedColumnName="id")
+     * @Assert\NotNull(message="Property must be specified.")
      */
     private Property $property;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", fetch="EAGER")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @Assert\NotNull(message="User must be specified.")
      */
     private User $user;
 

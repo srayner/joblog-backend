@@ -13,6 +13,11 @@ property_index:
     controller: App\Controller\PropertyController::indexAction
     methods: [GET]
 
+property_create:
+    path: /api/v1/properties
+    controller: App\Controller\PropertyController::createAction
+    methods: [POST]
+
 user_index:
     path: /api/v1/users
     controller: App\Controller\UserController::indexAction

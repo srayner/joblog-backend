@@ -19,21 +19,13 @@ class JobType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('summary', TextType::class, [
-                'constraints' => [new NotNull()]
-            ])
-            ->add('description', TextType::class, [
-                'constraints' => [new NotNull()]
-            ])
+            ->add('summary', TextType::class)
+            ->add('description', TextType::class)
             ->add('property', EntityType::class, [
-                'constraints' => [new NotNull()],
                 'class' => Property::class
             ])
-            ->add('status', TextType::class, [
-                'constraints' => [new NotNull()]
-            ])
+            ->add('status', TextType::class)
             ->add('user', EntityType::class, [
-                'constraints' => [new NotNull()],
                 'class' => User::class
             ]);
     }
